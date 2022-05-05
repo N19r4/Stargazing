@@ -1,0 +1,234 @@
+$telescopeWidth: 145px;
+$telescope-border: 15px;
+$telescope-color: rgb(56, 94, 97);
+
+body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #06080f;
+    cursor: none;
+    overflow: hidden;
+}
+.cursor
+{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("stars.jpg");
+    background-size: cover;  
+    background-repeat: no-repeat;  
+    clip-path: circle($telescopeWidth at 50vw 50vh);
+    pointer-events: none;
+    animation: open .4s ease-in-out 0s 1;
+}
+@keyframes open
+{
+    from {
+        clip-path: circle(0 at 50vw 50vh);
+    }
+    to {
+        clip-path: circle($telescopeWidth at 50vw 50vh);
+    }
+}
+.gradient
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,1);
+    background: linear-gradient(180deg, rgba(0,0,1,1) 0%, rgba(19,19,47,0.58) 55%, rgba(32,80,90,1) 100%);
+}
+.telescope
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    width: 2 * $telescopeWidth;// - $telescope-border
+    height: 2 * $telescopeWidth;// - $telescope-border
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    // border: $telescope-border solid $telescope-color;
+    animation: telescopePulse 4s ease-in 0s infinite alternate;
+}
+.letter
+{
+    color: white;
+    font-size: 15px;
+    position: absolute;
+    animation: starPulse 3s ease-in 0s infinite alternate;
+    z-index: 20;
+}
+.star
+{
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(211, 211, 211);
+    animation: starPulse 4s ease-in-out 0s infinite alternate;
+    box-shadow: 0 0 3px 1px white;
+}
+.text
+{
+    font-size: 20px;
+    text-align: center;
+    width: 40%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    animation: fadeOut 15s ease-in-out;
+}
+.dialogue
+{
+    position: absolute;
+    bottom: 260px;
+    right: 50px;
+    width: 200px;
+    color: white;
+    opacity: 0;
+    z-index: 20;
+    animation: fadeOut 15s ease-in-out 20s 1 alternate;
+}
+.mountains
+{
+    background-image: url("mountains.png");
+    width: 100%;
+    height: 50vh;
+    bottom: -100px;
+    left: 0;
+    z-index: 1;
+    position: absolute;
+}
+.mountains, .mordor, .fellowship, .cloud
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mordor
+{
+    background-image: url("mordor.png");
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    height: 30%;
+    position: absolute;
+}
+.red-eye
+{
+    width: 2px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: 0 0 3px 1px rgb(219, 71, 2);
+    animation: eyeAnimation 1.5s ease-in-out 0s infinite alternate;
+    position: relative;
+    top: 4.5%;
+    left: 23.5%;
+}
+.fellowship
+{
+    background-image: url("fellowship_of_the_Ring.png");
+    z-index: 0;
+    bottom: -10px;
+    right: 0;
+    width: 100%;
+    height: 70%;
+    position: relative;
+    transition: .5s;
+}
+// .fellowship::after
+// {
+//     position: absolute;
+//     content: "Mam wrażenie, że ktoś nas obserwuje...";
+//     width: 150px;
+//     height: 40px;
+//     padding: 20px;
+//     color: white;
+//     background-color: rgba(116, 115, 119, 0.178);
+//     top: 0;
+//     left: 50%;
+//     opacity: 0;
+//     transition: .5s;
+// }
+
+// .fellowship:hover::after
+// {
+//     opacity: 1;
+// }
+.cloud
+{
+    background-image: url("cloud.png");
+    width: 100%;
+    height: 100%;
+    opacity: 10%;
+    animation: cloudy 7s ease-in-out 0s infinite alternate;
+}
+@keyframes fadeOut
+{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes telescopePulse
+{
+    from {
+        box-shadow: 0 0 35px 3px $telescope-color inset;
+    }
+    to {
+        box-shadow: 0 0 35px 13px $telescope-color inset;
+
+    }
+}
+
+@keyframes starPulse
+{
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+@keyframes cloudy
+{
+    from {
+        transform: translate(0px);
+    }
+    to {
+        transform: translate(50px);
+    }
+}
+
+@keyframes eyeAnimation
+{
+    form {
+        box-shadow: 0 0 3px 1px rgb(219, 71, 2);
+    }
+    to {
+        box-shadow: 0 0 3px 3px rgb(219, 71, 2);
+    }
+}
+
+@media screen and (max-width: 1500px){
+    .red-eye
+    {
+        display: none;
+    }
+}

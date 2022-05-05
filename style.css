@@ -1,0 +1,296 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #06080f;
+  cursor: none;
+  overflow: hidden;
+}
+
+.cursor {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("stars.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-clip-path: circle(145px at 50vw 50vh);
+          clip-path: circle(145px at 50vw 50vh);
+  pointer-events: none;
+  -webkit-animation: open .4s ease-in-out 0s 1;
+          animation: open .4s ease-in-out 0s 1;
+}
+
+@-webkit-keyframes open {
+  from {
+    -webkit-clip-path: circle(0 at 50vw 50vh);
+            clip-path: circle(0 at 50vw 50vh);
+  }
+  to {
+    -webkit-clip-path: circle(145px at 50vw 50vh);
+            clip-path: circle(145px at 50vw 50vh);
+  }
+}
+
+@keyframes open {
+  from {
+    -webkit-clip-path: circle(0 at 50vw 50vh);
+            clip-path: circle(0 at 50vw 50vh);
+  }
+  to {
+    -webkit-clip-path: circle(145px at 50vw 50vh);
+            clip-path: circle(145px at 50vw 50vh);
+  }
+}
+
+.gradient {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000001;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000001), color-stop(55%, rgba(19, 19, 47, 0.58)), to(#20505a));
+  background: linear-gradient(180deg, #000001 0%, rgba(19, 19, 47, 0.58) 55%, #20505a 100%);
+}
+
+.telescope {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation: telescopePulse 4s ease-in 0s infinite alternate;
+          animation: telescopePulse 4s ease-in 0s infinite alternate;
+}
+
+.letter {
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  -webkit-animation: starPulse 3s ease-in 0s infinite alternate;
+          animation: starPulse 3s ease-in 0s infinite alternate;
+  z-index: 20;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: lightgray;
+  -webkit-animation: starPulse 4s ease-in-out 0s infinite alternate;
+          animation: starPulse 4s ease-in-out 0s infinite alternate;
+  -webkit-box-shadow: 0 0 3px 1px white;
+          box-shadow: 0 0 3px 1px white;
+}
+
+.text {
+  font-size: 20px;
+  text-align: center;
+  width: 40%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  -webkit-animation: fadeOut 15s ease-in-out;
+          animation: fadeOut 15s ease-in-out;
+}
+
+.dialogue {
+  position: absolute;
+  bottom: 260px;
+  right: 50px;
+  width: 200px;
+  color: white;
+  opacity: 0;
+  z-index: 20;
+  -webkit-animation: fadeOut 15s ease-in-out 20s 1 alternate;
+          animation: fadeOut 15s ease-in-out 20s 1 alternate;
+}
+
+.mountains {
+  background-image: url("mountains.png");
+  width: 100%;
+  height: 50vh;
+  bottom: -100px;
+  left: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.mountains, .mordor, .fellowship, .cloud {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mordor {
+  background-image: url("mordor.png");
+  z-index: 0;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  height: 30%;
+  position: absolute;
+}
+
+.red-eye {
+  width: 2px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: black;
+  -webkit-box-shadow: 0 0 3px 1px #db4702;
+          box-shadow: 0 0 3px 1px #db4702;
+  -webkit-animation: eyeAnimation 1.5s ease-in-out 0s infinite alternate;
+          animation: eyeAnimation 1.5s ease-in-out 0s infinite alternate;
+  position: relative;
+  top: 4.5%;
+  left: 23.5%;
+}
+
+.fellowship {
+  background-image: url("fellowship_of_the_Ring.png");
+  z-index: 0;
+  bottom: -10px;
+  right: 0;
+  width: 100%;
+  height: 70%;
+  position: relative;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.cloud {
+  background-image: url("cloud.png");
+  width: 100%;
+  height: 100%;
+  opacity: 10%;
+  -webkit-animation: cloudy 7s ease-in-out 0s infinite alternate;
+          animation: cloudy 7s ease-in-out 0s infinite alternate;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes telescopePulse {
+  from {
+    -webkit-box-shadow: 0 0 35px 3px #385e61 inset;
+            box-shadow: 0 0 35px 3px #385e61 inset;
+  }
+  to {
+    -webkit-box-shadow: 0 0 35px 13px #385e61 inset;
+            box-shadow: 0 0 35px 13px #385e61 inset;
+  }
+}
+
+@keyframes telescopePulse {
+  from {
+    -webkit-box-shadow: 0 0 35px 3px #385e61 inset;
+            box-shadow: 0 0 35px 3px #385e61 inset;
+  }
+  to {
+    -webkit-box-shadow: 0 0 35px 13px #385e61 inset;
+            box-shadow: 0 0 35px 13px #385e61 inset;
+  }
+}
+
+@-webkit-keyframes starPulse {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+@keyframes starPulse {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+@-webkit-keyframes cloudy {
+  from {
+    -webkit-transform: translate(0px);
+            transform: translate(0px);
+  }
+  to {
+    -webkit-transform: translate(50px);
+            transform: translate(50px);
+  }
+}
+
+@keyframes cloudy {
+  from {
+    -webkit-transform: translate(0px);
+            transform: translate(0px);
+  }
+  to {
+    -webkit-transform: translate(50px);
+            transform: translate(50px);
+  }
+}
+
+@-webkit-keyframes eyeAnimation {
+  form {
+    -webkit-box-shadow: 0 0 3px 1px #db4702;
+            box-shadow: 0 0 3px 1px #db4702;
+  }
+  to {
+    -webkit-box-shadow: 0 0 3px 3px #db4702;
+            box-shadow: 0 0 3px 3px #db4702;
+  }
+}
+
+@keyframes eyeAnimation {
+  form {
+    -webkit-box-shadow: 0 0 3px 1px #db4702;
+            box-shadow: 0 0 3px 1px #db4702;
+  }
+  to {
+    -webkit-box-shadow: 0 0 3px 3px #db4702;
+            box-shadow: 0 0 3px 3px #db4702;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .red-eye {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */
